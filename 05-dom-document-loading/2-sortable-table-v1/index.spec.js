@@ -68,19 +68,19 @@ describe('dom-document-loading/sortable-table-v1', () => {
     sortableTable = null;
   });
 
-  it('should be rendered correctly', () => {
+  it.only('should be rendered correctly', () => {
     expect(sortableTable.element).toBeVisible();
     expect(sortableTable.element).toBeInTheDocument();
   });
 
-  it('should not have default sorting', () => {
+  it.only('should not have default sorting', () => {
     const columns = sortableTable.element.querySelectorAll('.sortable-table__cell[data-id]');
     const isSortingExists = [...columns].some(column => column.dataset.order);
 
     expect(isSortingExists).toBeFalsy();
   });
 
-  it('should sort "asc" correctly for "sortType" equal string', () => {
+  it.only('should sort "asc" correctly for "sortType" equal string', () => {
     const field = 'title';
 
     sortableTable.sort(field, 'asc');
@@ -94,7 +94,7 @@ describe('dom-document-loading/sortable-table-v1', () => {
     expect(lastRow.children[cellIndex].textContent).toEqual('Powerbank аккумулятор Hiper SP20000');
   });
 
-  it('should sort "desc" correctly for "sortType" equal string', () => {
+  it.only('should sort "desc" correctly for "sortType" equal string', () => {
     const field = 'title';
 
     sortableTable.sort(field, 'desc');
@@ -108,7 +108,7 @@ describe('dom-document-loading/sortable-table-v1', () => {
     expect(lastRow.children[cellIndex].textContent).toEqual('Детский велосипед Lexus Trike Racer Trike');
   });
 
-  it('should sort "asc" correctly for "sortType" equal number', () => {
+  it.only('should sort "asc" correctly for "sortType" equal number', () => {
     const field = 'price';
 
     sortableTable.sort(field, 'asc');
@@ -122,7 +122,7 @@ describe('dom-document-loading/sortable-table-v1', () => {
     expect(lastRow.children[cellIndex].textContent).toEqual('53');
   });
 
-  it('should sort "desc" correctly for "sortType" equal number', () => {
+  it.only('should sort "desc" correctly for "sortType" equal number', () => {
     const field = 'price';
 
     sortableTable.sort(field, 'desc');
@@ -136,7 +136,7 @@ describe('dom-document-loading/sortable-table-v1', () => {
     expect(lastRow.children[cellIndex].textContent).toEqual('3');
   });
 
-  it('should have ability to be destroyed', () => {
+  it.only('should have ability to be destroyed', () => {
     sortableTable.destroy();
 
     expect(sortableTable.element).not.toBeInTheDocument();

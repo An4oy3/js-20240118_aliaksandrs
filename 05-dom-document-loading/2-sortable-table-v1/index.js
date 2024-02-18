@@ -3,7 +3,8 @@ export default class SortableTable {
   data;
   element={};
   subElements={};
-
+  // sortedType={column: null, direction: null};
+  sortedType={column:'Name', direction:'asc'}
   constructor(headerConfig = [], data = []) {
     this.headerData = headerConfig;
     this.data = data;
@@ -33,10 +34,14 @@ export default class SortableTable {
   }
 
   createHeader() {
+    const sortedDiv = `<span data-element="arrow" class="sortable-table__sort-arrow">
+                             <span class="sort-arrow"></span>
+                        </span>`;
     return `<div data-element="header" class="sortable-table__header sortable-table__row">
               ${this.headerData.map(el => {
-                return `<div class="sortable-table__cell" data-id="${el.id}" data-sortable="${el.sortable}" "> //data-order="${this.order}
+                return `<div class="sortable-table__cell" data-id="${el.id}" data-sortable="${el.sortable}"  ${!this.sortedType.direction ? '' : `data-order=${this.sortedType.direction}`}">
                             <span>${el.title}</span>
+                            ${el.title == this.sortedType.column ? sortedDiv : ""}
                         </div>`
               }).join('')}
             </div>`

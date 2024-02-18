@@ -74,12 +74,12 @@ describe('events-practice/sortable-table-v2', () => {
     sortableTable = null;
   });
 
-  it('should be rendered correctly', () => {
+  it.only('should be rendered correctly', () => {
     expect(sortableTable.element).toBeVisible();
     expect(sortableTable.element).toBeInTheDocument();
   });
 
-  it('should have default sorting marked by arrow icon', () => {
+  it.only('should have default sorting marked by arrow icon', () => {
     const arrow = sortableTable.element.querySelector('.sortable-table__sort-arrow');
     const parent = arrow.parentNode;
 
@@ -87,7 +87,7 @@ describe('events-practice/sortable-table-v2', () => {
     expect(parent).toHaveAttribute('data-id', expect.stringContaining('title'));
   });
 
-  it('should sort "desc" correctly for "sortType" equal string', () => {
+  it.only('should sort "desc" correctly for "sortType" equal string', () => {
     const { children } = sortableTable.subElements.header;
     const [title] = children;
 
